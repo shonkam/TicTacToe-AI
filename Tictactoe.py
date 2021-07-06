@@ -25,7 +25,7 @@ def game():
         showBoard(board)
         # if turn count can't be divided by 2, it must be player 2's turn
         if i % 2:
-            #Turn is over after a valid move is made
+            # turn is over after a valid move is made
             while True:
                 print('player 2, please make your move')
                 try:
@@ -37,7 +37,7 @@ def game():
                         print('That move has already been made, please make another move')
                 except (ValueError, TypeError, KeyError):
                     print('Invalid input')
-
+        # if turn count can be divided by 2, it must be player 1's turn
         else: 
             while True:
                 print('player 1, please make your move')
@@ -51,7 +51,9 @@ def game():
                 except (ValueError, TypeError, KeyError):
                     print('Invalid input')
 
+        # after 5 moves a win is possible
         if i >= 4:
+            # each individual winning pattern is checked
             if board['1'] == board['2'] == board['3'] != ' ':
                 if board['1'] == 'X':
                     print('***********************')
@@ -152,7 +154,8 @@ def game():
                 print('***********************')
                 showBoard(board)
                 print('The game is a draw')
-            
+
+    #rematch option + reset board      
     rematch = input('Rematch?(y/n)')
     if rematch == 'y' or rematch == 'Y':
         for keys in board:
@@ -164,4 +167,3 @@ def game():
 
 if __name__ == "__main__":
     game()
-    # createBoard(board)

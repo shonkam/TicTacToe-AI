@@ -12,7 +12,7 @@ def showBoard(board):
     print('-+-+-')
     print(board['1'] + '|' + board['2'] + '|' + board['3'])
 
-# finds the best move for the AI player using minimax algorithm
+# finds the best move for the AI player by using the minimax algorithm
 def AIMove():
     bestScore = -500
     bestMove = 0
@@ -29,7 +29,7 @@ def AIMove():
     # returns the move that return the highest reward
     return bestMove
 
-# minimax algorithm is used to calculate the best move for the AI player
+# minimax algorithm is used to calculate the reward for a certain move
 def minimax(board, isMaximizing):
 
     # negative reward for player win
@@ -138,7 +138,7 @@ def checkWin():
         else:
             return 2
 
-# rematch
+# offers an option to play a rematch
 def rematch(val):
     if val == 'y' or val == 'Y':
         return True
@@ -150,19 +150,17 @@ def game():
 
     turn = playerMark
 
-    # 9 is the maxium amount of available moves
+    # 9 is the maxium amount of available moves and 1 move must be left for the game to determine a draw
     for i in range(9):
         showBoard(board)
-        # if i can be reduced by 2, it's the player's turn
+        # if i can be divided by 2 without a remainder, it's the player's turn
         if i % 2 == 0:
-            print(i % 2 == 0)
             turn = playerMark
         else:
-            print(i % 2 == 0)
             turn = AIMark
         makeMove(turn)
 
-        # after 5 moves a win is possible
+        # after 5 moves, a win or a draw is possible and it must be checked
         if i >= 4:
             if checkWin() == 1:
                 print('****************')

@@ -153,11 +153,13 @@ def game():
     # 9 is the maxium amount of available moves
     for i in range(9):
         showBoard(board)
-        # if turn count can't be divided by 2, it must be player 2's turn
-        if i % 2:
-            turn = AIMark
-        else:
+        # if i can be reduced by 2, it's the player's turn
+        if i % 2 == 0:
+            print(i % 2 == 0)
             turn = playerMark
+        else:
+            print(i % 2 == 0)
+            turn = AIMark
         makeMove(turn)
 
         # after 5 moves a win is possible
